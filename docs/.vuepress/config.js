@@ -55,7 +55,20 @@ module.exports = {
                     { text: '模块', link: '/zh/module' },
                     { text: '关于', link: '/zh/about/' },
                     { text: 'Github', link: 'https://github.com/Ansurfen/yock' }
-                ]
+                ],
+                sidebar: {
+                    '/zh/guide/': [
+                        'introduce',
+                        'gnu',
+                        'pipeline',
+                        'concurrency',
+                        'ypm',
+                        'module',
+                        'sdk',
+                    ],
+                    '/zh/api/': [],
+                    '/zh/about/': []
+                },
             }
         }
     }
