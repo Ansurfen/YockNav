@@ -1,7 +1,7 @@
 module.exports = {
     title: 'Yock wiki',
     description: 'Yock official wiki',
-    base: '/',
+    base: './',
     head: [
         ['link', { rel: 'icon', href: '/favicon.ico' }]
     ],
