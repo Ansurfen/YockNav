@@ -34,7 +34,7 @@ cd ctl
 ./build.bat/sh oslinux//cross compile, build for linux
 ```
 
-## GetStarted
+## Environment tidy
 
 If you use VSCode as your development environment, you can install the plugin for Lua code hints for a better experience.
 ![lua-tip](https://github.com/Ansurfen/ansurfen.github.io/blob/main/images/yock/lua-tip.png?raw=true)
