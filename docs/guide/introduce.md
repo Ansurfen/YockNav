@@ -10,9 +10,6 @@ categories: yock
 
 [Yock](https://github.com/Ansurfen/yock)is a framework built for building, somewhat similar to nodejs and bazel, with some functionality encapsulated under the basement based on an interpreter. Just like NodeJS, Yock has implemented its own package management tool, YPM, based on wrapped Lua, which means that it is possible to introduce third-party libraries.
 
-[Install](#Install)
-[Get Started](#GetStarted)
-
 ## Install
 `NOTE`: Regardless of the installation method, you need to mount yock to the local environment after downloading. After extracting the package, go to the directory of the executable and run `yock run install.lua` to complete the process.
 
@@ -21,19 +18,20 @@ categories: yock
 
 ### Package Management Tool (Lag in Version Update)
 Package management tools are generally automatically decompressed after downloading, and you still need to manually run the install.lua after decompression, so it is highly recommended to use the form of `Git Release`.
+
 npm: npm i @ansurfen/yock -g
+
 pip: pip install yock
 
 ### Build by hand
 ```bash
 git clone https://github.com/Ansurfen/yock.git
 cd ctl
-<!-- windows -->
-./build.bat ffi //build with libffi
-./build.bat dev //build developer version
-./build.bat oslinux//cross compile to linux
-<!-- other platform -->
-go run . run ../auto/build.lua all -- --all-os linux
+
+./build.bat/sh //standard build
+./build.bat/sh ffi //build with libffi
+./build.bat/sh dev //build development version
+./build.bat/sh oslinux//cross compile, build for linux
 ```
 
 ## GetStarted
@@ -41,9 +39,14 @@ go run . run ../auto/build.lua all -- --all-os linux
 If you use VSCode as your development environment, you can install the plugin for Lua code hints for a better experience.
 ![lua-tip](https://github.com/Ansurfen/ansurfen.github.io/blob/main/images/yock/lua-tip.png?raw=true)
 
-When `yock run install.lua` is executed successfully, you can create a working directory to write and test yock scripts. Run `ypm tidy` (ypm.sh for operating systems other than Windows) to complete the code definition, and it will create an include directory in the working directory with source files for plugin prompts only.
+If you use IDEA or JetBrain's tools as your development environment, you can install EmmyLua to get the same effect.
+![lua-tip](https://github.com/Ansurfen/YockNav/blob/main/assets/img/lua-tip-idea.png?raw=true)
 
-### Hello, World!
+
+## Get Start
+
+When `yock run install.lua` is executed successfully, you can create a working directory to write and test yock scripts. Run `ypm tidy` to complete the code definition, and it will create an include directory in the working directory with source files for plugin prompts only.
+
 ```lua
 -- main.lua
 print("Hello World")

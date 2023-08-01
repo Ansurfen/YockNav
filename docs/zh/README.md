@@ -2,7 +2,7 @@
 home: true
 heroImage: /favicon.ico
 actionText: 快速开始 →
-actionLink: /guide/
+actionLink: /zh/guide/
 features:
 - title: 简洁之上
   details: 以 lua 语言为中心编排脚本，以最少的适配帮助你专注于编写业务。
