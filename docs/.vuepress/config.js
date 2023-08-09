@@ -28,7 +28,7 @@ module.exports = {
                 nav: [
                     { text: 'Guide', link: '/guide/' },
                     { text: 'API', link: '/api/' },
-                    { text: 'Module', link: '/zh/module' },
+                    { text: 'Module', link: '/module/' },
                     { text: 'About', link: '/about/' },
                     { text: 'Github', link: 'https://github.com/Ansurfen/yock' }
                 ],
@@ -42,7 +42,7 @@ module.exports = {
                         'module',
                         'sdk',
                     ],
-                    '/api/': [],
+                    '/api/': ['introduce', 'gnu'],
                     '/about/': []
                 },
             },
@@ -52,7 +52,7 @@ module.exports = {
                 nav: [
                     { text: '指南', link: '/zh/guide/' },
                     { text: 'API', link: '/zh/api/' },
-                    { text: '模块', link: '/zh/module' },
+                    { text: '模块', link: '/zh/module/' },
                     { text: '关于', link: '/zh/about/' },
                     { text: 'Github', link: 'https://github.com/Ansurfen/yock' }
                 ],
@@ -66,7 +66,10 @@ module.exports = {
                         'module',
                         'sdk',
                     ],
-                    '/zh/api/': [],
+                    '/zh/api/': [
+                        'introduce',
+                        'gnu'
+                    ],
                     '/zh/about/': []
                 },
             }

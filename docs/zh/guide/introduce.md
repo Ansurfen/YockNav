@@ -25,12 +25,17 @@ pip: pip install yock
 ### 自己构建
 ```bash
 git clone https://github.com/Ansurfen/yock.git
+
 cd ctl
 
 ./build.bat/sh //正常构建
-./build.bat/sh ffi //构建支持libffi的版本
-./build.bat/sh dev //构建测试版本
-./build.bat/sh oslinux//交叉编译，构建linux版本
+./build.bat/sh ffi //带 libffi 构建 (需要 gcc 或 mingw)
+./build.bat/sh dev //构建开发版本
+./build.bat/sh oslinux //交叉编译到linux平台
+
+// 自动构建出带libffi版本的项目，当上一步完成后
+yock run install.lua
+yock run ../auto/build-ffi.lua
 ```
 
 ## 环境搭建

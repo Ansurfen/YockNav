@@ -125,11 +125,11 @@ kill(8080)
 
 ## 网络相关
 ```lua
-table.dump(ipconfig())
+table.dump(ifconfig())
 -- 根据端口号查找相应的信息
 print("PID", "Proto", "State","Local")
 for _, info in ipairs(lsof(58838)) do
-    print(info.Pid, info.Proto, info.State, info.Local)
+    print(info.pid, info.proto, info.state, info.Local)
 end
 ```
 

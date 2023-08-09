@@ -125,7 +125,7 @@ kill(8080)
 
 ## Network related
 ```lua
-table.dump(ipconfig())
+table.dump(ifconfig())
 -- Find the appropriate information based on the port number
 print("PID", "Proto", "State","Local")
 for _, info in ipairs(lsof(58838)) do
