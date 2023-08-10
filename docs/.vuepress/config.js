@@ -42,7 +42,10 @@ module.exports = {
                         'module',
                         'sdk',
                     ],
-                    '/api/': ['introduce', 'gnu'],
+                    '/api/': [
+                        'gnu',
+                        'sync'
+                    ],
                     '/about/': []
                 },
             },
@@ -67,8 +70,8 @@ module.exports = {
                         'sdk',
                     ],
                     '/zh/api/': [
-                        'introduce',
-                        'gnu'
+                        'gnu',
+                        'sync'
                     ],
                     '/zh/about/': []
                 },
