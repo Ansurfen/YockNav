@@ -1,0 +1,6 @@
+import{_ as n}from"./plugin-vue_export-helper-c27b6911.js";import{o as a,c as s,d as e}from"./app-62237bf4.js";const o={},t=e(`<p>Ycho 是yock的日志模块，主要用来设置日志相关的参数，你能够在<code>{用户目录}/.yock/log</code>文件夹下面查看每次运行时的日志。</p><h2 id="选项" tabindex="-1"><a class="header-anchor" href="#选项" aria-hidden="true">#</a> 选项</h2><ul><li>stdout, boolean, 允许日志输出到终端上，若为true</li></ul><h2 id="示例" tabindex="-1"><a class="header-anchor" href="#示例" aria-hidden="true">#</a> 示例</h2><div class="language-lua line-numbers-mode" data-ext="lua"><pre class="language-lua"><code><span class="token function">option</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    ycho <span class="token operator">=</span> <span class="token punctuation">{</span>
+        stdout <span class="token operator">=</span> <span class="token keyword">true</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>`,5),c=[t];function i(l,d){return a(),s("div",null,c)}const p=n(o,[["render",i],["__file","ycho.html.vue"]]);export{p as default};
