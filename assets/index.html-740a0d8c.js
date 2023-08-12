@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-c06f4820","path":"/zh/api/pipeline/","title":"Pipeline","lang":"en-US","frontmatter":{"title":"Pipeline","article":false,"feed":false,"sitemap":false},"headers":[],"git":{},"readingTime":{"minutes":0,"words":1},"filePathRelative":null}');export{e as data};
