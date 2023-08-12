@@ -1,5 +1,7 @@
 ---
 title: Config
+icon: gears
+# index: false
 ---
 
 yock will load local configuration file to prepare for formal running before it executes script, for example, indicating how the logger works, launching the daemon and knowing port the daemon binds, and none of this is possible without configuration file support. You can view yock.yaml file below `{HomeDir}/.yock` folder, which is yock's configuration and except it, yockd.yaml which rules how daemon launches and runs also is below.

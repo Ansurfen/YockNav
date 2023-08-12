@@ -1,6 +1,5 @@
 ---
 title: signal
-icon: laptop-code
 category:
   - API
   - sync

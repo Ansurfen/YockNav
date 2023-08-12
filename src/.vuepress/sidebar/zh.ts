@@ -37,7 +37,6 @@ export const zhSidebar = sidebar({
     // "slides",
   ],
   "/zh/api/": [
-    "",
     "env",
     "ffi",
     "yock",
@@ -53,6 +52,13 @@ export const zhSidebar = sidebar({
       icon: "book",
       prefix: "sync/",
       link: "sync/",
+      children: "structure"
+    },
+    {
+      text: "Pipeline",
+      icon: "book",
+      prefix: "pipeline/",
+      link: "pipeline/",
       children: "structure"
     },
     {

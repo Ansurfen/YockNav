@@ -1,6 +1,5 @@
 ---
 title: coroutine
-icon: laptop-code
 category:
   - API
   - sync

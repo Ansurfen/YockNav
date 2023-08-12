@@ -1,6 +1,5 @@
 ---
 title: process
-icon: harddisk
 ---
 
 ## nohup()

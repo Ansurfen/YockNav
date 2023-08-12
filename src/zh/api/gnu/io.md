@@ -114,13 +114,25 @@ cat reads content from specified file.
 ---@param dir string
 ---@return string[][], err
 function ls(dir) end
+
+---@param dir string
+---@param callback fun(path: string, info: fileinfo)
+---@return nil, err
+function ls(dir, callback) end
 ```
 
 * Introduce
 
+overload 1
+
 ls lists the information of directory or file according to specified directory.
 
 `NOTE`: results to be returned by ls isn't like other gun command. In order to save memory, it's set array format to store information. You can see detail in the following.
+
+overload 2
+
+ls recurses given directory, and can set callback that recives visited path and
+
 
 * Format of info
 
@@ -131,6 +143,13 @@ ls lists the information of directory or file according to specified directory.
 [3] mod_time, string, e.g. Aug  6 15:26
 
 [4] filename, string
+
+* Example
+```lua
+ls(".", function(path, info)
+     print(path)
+end)
+```
 
 ## mkdir()
 

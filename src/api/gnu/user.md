@@ -1,6 +1,5 @@
 ---
 title: user
-icon: harddisk
 ---
 
 ## whoami()

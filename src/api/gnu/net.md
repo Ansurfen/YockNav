@@ -1,6 +1,5 @@
 ---
 title: net
-icon: Field-String
 ---
 
 ## ifconfig_addr

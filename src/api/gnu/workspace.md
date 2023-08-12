@@ -1,6 +1,5 @@
 ---
 title: workspace
-icon: harddisk
 ---
 
 ## pwd()

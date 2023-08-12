@@ -1,6 +1,5 @@
 ---
 title: pipe
-icon: Field-String
 ---
 
 pipe object is designed to simulate the pipe operation of terminal on lua.

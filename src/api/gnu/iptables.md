@@ -1,6 +1,5 @@
 ---
 title: iptables
-icon: Field-String
 ---
 
 :::danger

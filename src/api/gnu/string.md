@@ -1,6 +1,5 @@
 ---
 title: string
-icon: Field-String
 ---
 
 ## grep_opt

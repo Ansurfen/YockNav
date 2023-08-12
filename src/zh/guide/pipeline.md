@@ -40,12 +40,12 @@ end)
 jobs("all", "test", "build", "deploy")
 ```
 鉴于上文的介绍，我们不难看出这份代码中存在的task(Task由一个或者多个job组成):
-Task|Jobs
--|:-:|-
-test|test
-build|build
-depoly|depoly
-all|test, build, depoly
+|Tasks|Jobs|
+|:------:|:------:|
+|test|test|
+|build|build|
+|depoly|depoly|
+|all|test, build, depoly|
 
 要分task调度他们相当容易，只需要在运行的文件后面加上指定的任务名即可。例如运行all任务，`yock run main.lua all`。同时运行多个任务也是支持的, `yock run main.lua all depoly`。每个task之间都是协程异步执行的，而task内的job则是按照顺序依次执行。
 

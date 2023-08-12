@@ -1,6 +1,5 @@
 ---
 title: channel
-icon: laptop-code
 category:
   - API
   - sync

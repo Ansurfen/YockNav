@@ -1,6 +1,5 @@
 ---
 title: systemctl
-icon: Field-String
 ---
 
 :::danger
