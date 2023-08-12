@@ -1,47 +1,46 @@
 ---
-title: workspace
-icon: harddisk
+title: 工作区
 ---
 
 ## pwd()
 
-* Prototype
+* 原型
 ```lua
 ---@return string, err
 function pwd() end
 ```
 
-* Introduce
+* 介绍
 
-pwd returns working directory for current program
+pwd 返回当前程序的工作目录。
 
 ## whereis()
 
-* Prototype
+* 原型
 ```lua
 ---@param k string
 ---@return string, err
 function whereis(k) end
 ```
 
-* Introduce
+* 介绍
 
-whereis returns absolute path
+whereis 返回指定环境变量所在的绝对路径。
 
 ## alias()
 
-* Prototype
+* 原型
 ```lua
 ---@param k string
 ---@param v string
 function alias(k, v) end
 ```
 
-* Introduce
+* 介绍
 
-alias takes an alias v for k, and it isn't directly call alias command on terminal or shell but saves it in the program's memory for mapping commands the `sh` function call.
+alias 为 k 创建一个别名 v，它并不是直接调用终端或者shell上的 alias 命令，而是保存它在程序的内存当中去映射命令，当 `sh` 函数调用的时候。
 
-* Example
+* 示例
 ```lua
 alias("CC", "go")
 sh("$CC version")
@@ -49,27 +48,26 @@ sh("$CC version")
 
 ## unalias()
 
-* Prototype
+* 原型
 ```lua
 ---@vararg string
 function unalias(...) end
 ```
 
-* Introduce
+* 介绍
 
-unalias remove mapping relationship from alias.
+unalias 移除 alias 的映射关系。
 
-* Example
+* 示例
 ```lua
 alias("CC", "go")
 unalias("CC")
 sh("$CC version")
 ```
 
-
 ## export()
 
-* Prototype
+* 原型
 ```lua
 ---@param k string
 ---@param v string
@@ -77,48 +75,30 @@ sh("$CC version")
 function export(k, v) end
 ```
 
-* Introduce
+* 介绍
 
-export sets user's environment variable for ever. If you only want to set temporary or local variable, see the `exportl` function.  `NOTE`: In current overload, write is overwrite format. If you want to write by append, see other overload function.
+export 永久地设置用户环境变量。如果你只想要设置临时或者局部变量，看 `exportl` 函数。 
 
-* Example
+* 示例
 ```lua
-# hardly hurt
+-- 几乎无害
 export("PATH:/bin/yock")
-# append write into PATH when value isn't exist, and it's available on windows,
-# which meant that it isn't required using Path instead of PATH.
+-- 当值不存在的时候，将追加写入PATH中，它能够在 windows 上起作用
+-- 这意味着不需要使用 Path 替代 PATH
 
-# please keep cautious!!!
-export("PATH", "/bin/yock") -- it'll overwrite entire PATH's value
-```
-
-## export()
-
-* Prototype
-```lua
----@param kv string
----@return err
-function export(kv) end
-```
-
-* Introduce
-
-export sets user's environment variable for ever. If you only want to set temporary or local variable, see the `exportl` function.  Comparing with `export(k, v)`, the overload function is conservative, and write value by append. If you want to overwrite entire value, see other overload function.  
-
-* Example
-```lua
-export("PATH:/bin/yock")
+-- 请保持谨慎!!!
+export("PATH", "/bin/yock") -- 它将重写整个 PATH 的值
 ```
 
 ## unset()
 
-* Prototype
+* 原型
 ```lua
 ---@param k string
 function unset(k) end
 ```
 
-* Introduce
+* 介绍
 
 unset removes specified environment variable for ever. If you only want to set temporary, or local variable, see the `unsetl` function.  Just like export, the unset function supports entire delete and deletes one of values for specified key.
 
@@ -160,25 +140,22 @@ unsetl removes temporary or local environment variable, and less like the `expor
 
 ## environ()
 
-* Prototype
+* 原型
 ```lua
+---@return table<string, string>
+function environ() end
+
 ---@param k string
 ---@return string[]
 function environ(k) end
 ```
 
-* Introduce
+* 介绍
 
-environ returns values of environment variables k, and if v includes multiple values (e.g. PATH), then it'll be split into string array.
+重载 1
 
-## environ()
+environ 返回所有环境变量。
 
-* Prototype
-```lua
----@return table<string, string>
-function environ() end
-```
+重载 2
 
-* Introduce
-
-environ returns all environment variables
+environ 返回环境变量 k 的值，如果值包含了多个值的情况 （例如，PATH），那它将会被分割成字符串数组返回。

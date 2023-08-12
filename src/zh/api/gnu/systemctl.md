@@ -1,12 +1,10 @@
 ---
 title: systemctl
-icon: Field-String
 ---
 
 :::danger
-Yet not finished, please not use.
+未完成，请不要使用。
 :::
-
 
 ## systemctl_opt
 

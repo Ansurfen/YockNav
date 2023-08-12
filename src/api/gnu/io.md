@@ -32,7 +32,7 @@ function echo(opt, ...) end
 
 * Introduce
 
-echo prints variable string argument on terminal andreturns an array that saves every result of print.Except primitive string, you also print environment variablecorresponding value.
+echo prints variable string argument on terminal and returns an array that saves every result of print. Except primitive string, you also print environment variable corresponding value.
 
 * Example
 
@@ -130,8 +130,7 @@ ls lists the information of directory or file according to specified directory.
 
 overload 2
 
-ls recurses given directory, and can set callback that recives visited path and
-
+ls recurses given directory, and can set callback that recives visited path and path's information while walking dir.
 
 * Format of info
 

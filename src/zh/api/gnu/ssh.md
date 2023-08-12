@@ -1,6 +1,5 @@
 ---
 title: ssh
-icon: harddisk
 ---
 
 ## sshClient

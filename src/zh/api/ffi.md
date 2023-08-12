@@ -7,25 +7,25 @@ category:
   - sync
 ---
 
-ffi allows yock open and call dynamic library.
+ffi 运行 yock 打开和调用动态库。
 
 ## ffiLib
 * lib table
 
 ## ffi.library()
 
-* Prototype
+* 原型
 ```lua
 ---@param lib string
 ---@param funcs table
 function ffi.library(lib, funcs) end
 ```
 
-* Introduce
+* 介绍
 
 library declares function prototype (arguments + return value type) and creates its at running. Then, you can call its as function through ffi.lib.'lib_name'.'function_name' format. 
 
-* Type Mapping
+* 类型映射
 
 |Lua      |C| 
 | :-----------: | -------------: | 
@@ -44,10 +44,10 @@ library declares function prototype (arguments + return value type) and creates 
 |number   |float|
 |number   |double|
 |boolean  |bool|
-|string   |str (ptr type alias)|
-|userdata |ptr # pointer type|
+|string   |str (ptr 类型别名)|
+|userdata |ptr # 指针类型|
 
-* Example
+* 示例
 ```lua
 -- declares function prototype, and it's worth noting filename extension isn't required,
 -- and yock will refer extension's name to add it automatically

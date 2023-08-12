@@ -1,9 +1,8 @@
 ---
 title: Conf
-icon: harddisk
 ---
 
-conf can open and parse configuration with easy and fast way, supporting yaml, yml, json, toml, hcl, tfvars, ini, properties, props, prop, dotenv, env file format.
+conf 能够简单、快速地打开和解析配置文件，支持 yaml, yml, json, toml, hcl, tfvars, ini, properties, props, prop, dotenv, env 文件格式。
 
 ## conf.create()
 
@@ -17,7 +16,7 @@ function conf.create(file, tmpl) end
 
 * Introduce
 
-create returns parsed conf object, and creates a new file and panics when file isn't exist.
+create 返回被解析的 conf 对象。当文件不存在的时候，将会创建新文件并panic。
 
 ## conf.open()
 
@@ -30,7 +29,7 @@ function conf.open(file) end
 
 * Introduce
 
-open must open specified file, otherwise it would panic.
+open 必须打开指定的文件，否则它将会panic。
 
 ## conf:read()
 
@@ -43,7 +42,7 @@ function conf:read(k) end
 
 * Introduce
 
-read returns value by json path
+read 根据 json path 返回值
 
 ## conf:write()
 
@@ -56,7 +55,7 @@ function conf:write(k, v) end
 
 * Introduce
 
-writes v to specified k, and required to call the save function for persisting on configuration file.
+写入键值对，需要调用save函数去持久化到配置文件。
 
 ## conf:save()
 
@@ -67,4 +66,4 @@ function conf:save() end
 
 * Introduce
 
-save persists data based-on memory into configuration.
+save 持久化内存中的数据进入配置文件当中。

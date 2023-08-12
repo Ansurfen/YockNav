@@ -1,6 +1,5 @@
 ---
-title: net
-icon: Field-String
+title: 网络
 ---
 
 ## ifconfig_addr
@@ -19,15 +18,15 @@ icon: Field-String
 
 ## ifconfig()
 
-* Prototype
+* 原型
 ```lua
 ---@return ifconfig_result[]
 function ifconfig() end
 ```
 
-* Introduce
+* 介绍
 
-ifconfig returns information about net interface.
+ifconfig 返回网络接口的信息。
 
 ## lsof_info
 * pid string
@@ -38,29 +37,29 @@ ifconfig returns information about net interface.
 
 ## lsof()
 
-* Prototype
+* 原型
 ```lua
 ---@param port? integer
 ---@return lsof_info[]|lsof_info
 function lsof(port) end
 ```
 
-* Introduce
+* 介绍
 
-lsof returns information about port occupancy status according to given port.
+lsof 返回给定端口的占用情况。
 
 ## curl_opt
-* header? table<string, string> # header contains the request header fields either received by the server or to be sent by the client.
-* method? string|"GET"|"POST"|"HEAD"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH" # method specifies the HTTP method (GET, POST, PUT, etc.)
-* data? string # data is the request's body.
-* save? boolean # write body into specified file when set true.
-* dir? string # set root directory of file to be saved.
-* filename? fun(url: string): string # returns filename that will be saved according to url.
+* header? table<string, string> # header包含请求头字段，要么作为服务器的接收，要么作为客户端的发送。
+* method? string|"GET"|"POST"|"HEAD"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH" # method 指明 HTTP 请求的方法 (GET, POST, PUT, etc.)
+* data? string # data 是请求的 body 部分。
+* save? boolean # 当设置 true，写入 body 到指定文件。
+* dir? string # 设置保存文件的根目录。
+* filename? fun(url: string): string # 根据 url 返回将保存的文件名。
 * async? boolean #
 
 ## curl()
 
-* Prototype
+* 原型
 ```lua
 ---@param opt curl_opt
 ---@vararg string
@@ -72,24 +71,24 @@ function curl(opt, ...) end
 function curl(...) end
 ```
 
-* Introduce 
+* 介绍 
 
-overload 1
+重载 1
 
-curl receives urls and ranges its to send request one by one, and collects all response.body to contact and return according to double '\n'.
+curl 接收 urls 和遍历他们逐一发送请求，并收集所有响应体，通过双'\n'连接后返回。
 
-overload 2
+重载 2
 
-curl receives variable string argument and ranges its to send GET request one by one, and collects all response.body to contact and return according to double ‘\n’.
+curl 接收可变字符串变量和遍历他们发送 GET 请求，并收集所有响应体，通过双'\n'连接后返回。
 
-* Option
+* 选项
     - opt, [curl_opt](#curl-opt)
     - urls, ...(string)
 
-* Example
+* 示例
 ```lua
--- curl fetches url and saves it into specified path combing dir and filename.
--- `NOTE`: if save is true, body will not write into return's string.
+-- curl 抓取 url 和保存它到基于目录和文件名连接的path。
+-- `注意`: 如果 save 为 true，响应的数据只会写入文件，而不会作为字符串返回。
 curl({
     save = true,
     dir = "./",

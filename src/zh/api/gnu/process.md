@@ -1,21 +1,19 @@
 ---
-title: process
-icon: harddisk
+title: 进程
 ---
 
 ## nohup()
 
-* Prototype
+* 原型
 ```lua
 ---@param cmd string
 ---@return err
 function nohup(cmd) end
 ```
 
-* Introduce
+* 介绍
 
-nohup launches backend process hidden window.
-
+nohup 隐藏窗口地启动后台进程。
 
 ## pgrep_info
 * name string
@@ -23,16 +21,16 @@ nohup launches backend process hidden window.
 
 ## pgrep()
 
-* Prototype
+* 原型
 ```lua
 ---@param name string
 ---@return pgrep_info[]
 function pgrep(name) end
 ```
 
-* Introduce
+* 介绍
 
-pgrep returns results according to process's name.
+pgrep 根据进程名称返回相关信息。
 
 ## ps_info
 * name string
@@ -43,48 +41,48 @@ pgrep returns results according to process's name.
 * user? string
 
 ## ps_opt
-* user? boolean # includes process's launcher when set true
-* cpu? boolean # includes cpu usage ratio at calling moment when set true
-* time? boolean # includes process's start time when set true
-* mem? boolean # includes process's memory usage ratio when set true
+* user? boolean # 当设置 true，包含进程的执行者
+* cpu? boolean # 当设置 true，包含 cpu 在调用那一刻的使用率
+* time? boolean # 当设置 true，包含进程的开始时间
+* mem? boolean # 当设置 true，包含进程的内存使用率
 
 ## ps()
 
-* Prototype
+* 原型
 ```lua
 ---@param opt ps_opt|string|integer|nil
 ---@return table<integer, ps_info>
 function ps(opt) end
 ```
 
-* Introduce
+* 介绍
 
-ps lists all process state when opt is nil. It's worthy of noting that there only are cmd (command) and name (process's name) field in default. If you want to get detailed info, try to use ps_opt (table) format to make it. 
- 
-Except above two method introduced, there are two way to query, and the one is indicated pid, and the other passes by string to do fuzzy matching according to cmd.
+ps 列出所有进程状态，当opt为空时。值得注意的是，默认情况下只有 cmd (命令) 和 name（进程名）字段。如果你想要获得更详细的信息，尝试使用 ps_opt (table) 格式去获取。
 
-* Option
+除了以上介绍的两种方式，还有两种查询方式，一种是指明 pid，另一个是模糊匹配 cmd 字符串。
+
+* 选项
     - opt, [ps_opt](#ps-opt)
 
-* Example
+* 示例
 ```lua
-local info, err = ps() -- fetches all
+local info, err = ps() -- 抓取所有
 yassert(err)
 table.dump(info)
-ps({ mem = true, user = true }) -- gets all with launcher and memory usage ratio info
-ps(20) -- queries process of pid 20
-ps("yock") -- fuzzy queries process of command with yock
+ps({ mem = true, user = true }) -- 列出所有进程信息，同时附带内存使用率和进程执行者信息
+ps(20) -- 查询 pid 20的进程信息
+ps("yock") -- 模糊匹配命令带 yock 的进程信息
 ```
 
 ## kill()
 
-* Prototype
+* 原型
 ```lua
 ---@param k integer|string
 ---@return err
 function kill(k) end
 ```
 
-* Introduce
+* 介绍
 
-kill kills process according to pid or process's name.
+kill 根据给定的 pid 或者 进程名 杀死进程。

@@ -25,7 +25,7 @@ function whereis(k) end
 
 * Introduce
 
-whereis returns absolute path
+whereis returns absolute path for given environment variable.
 
 ## alias()
 
@@ -78,35 +78,17 @@ function export(k, v) end
 
 * Introduce
 
-export sets user's environment variable for ever. If you only want to set temporary or local variable, see the `exportl` function.  `NOTE`: In current overload, write is overwrite format. If you want to write by append, see other overload function.
+export sets user's environment variable for ever. If you only want to set temporary or local variable, see the `exportl` function.
 
 * Example
 ```lua
-# hardly hurt
+-- hardly hurt
 export("PATH:/bin/yock")
-# append write into PATH when value isn't exist, and it's available on windows,
-# which meant that it isn't required using Path instead of PATH.
+-- append write into PATH when value isn't exist, and it's available on windows,
+-- which meant that it isn't required using Path instead of PATH.
 
-# please keep cautious!!!
+-- please keep cautious!!!
 export("PATH", "/bin/yock") -- it'll overwrite entire PATH's value
-```
-
-## export()
-
-* Prototype
-```lua
----@param kv string
----@return err
-function export(kv) end
-```
-
-* Introduce
-
-export sets user's environment variable for ever. If you only want to set temporary or local variable, see the `exportl` function.  Comparing with `export(k, v)`, the overload function is conservative, and write value by append. If you want to overwrite entire value, see other overload function.  
-
-* Example
-```lua
-export("PATH:/bin/yock")
 ```
 
 ## unset()
@@ -161,6 +143,9 @@ unsetl removes temporary or local environment variable, and less like the `expor
 
 * Prototype
 ```lua
+---@return table<string, string>
+function environ() end
+
 ---@param k string
 ---@return string[]
 function environ(k) end
@@ -168,16 +153,10 @@ function environ(k) end
 
 * Introduce
 
-environ returns values of environment variables k, and if v includes multiple values (e.g. PATH), then it'll be split into string array.
-
-## environ()
-
-* Prototype
-```lua
----@return table<string, string>
-function environ() end
-```
-
-* Introduce
+overload 1
 
 environ returns all environment variables
+
+overload 2
+
+environ returns values of environment variables k, and if v includes multiple values (e.g. PATH), then it'll be split into string array.

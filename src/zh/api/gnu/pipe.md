@@ -1,9 +1,8 @@
 ---
-title: pipe
-icon: Field-String
+title: 管道
 ---
 
-pipe object is designed to simulate the pipe operation of terminal on lua.
+pipe 对象被设计在lua中模拟终端的管道操作。
 
 ## pipe
 * type integer
@@ -12,7 +11,7 @@ pipe object is designed to simulate the pipe operation of terminal on lua.
 
 ## file()
 
-* Prototype
+* 原型
 ```lua
 ---@operator add(pipe):pipe
 ---@operator sub(pipe):pipe
@@ -21,36 +20,37 @@ pipe object is designed to simulate the pipe operation of terminal on lua.
 function file(...) end
 ```
 
-* Introduce
+* 介绍
 
-file saves file descriptor based-on filename and creates empty file when given file not exist.
+file 保存基于文件名的文件描述符。如果文件不存在，将会创建。
 
-* Example
+* 示例
 ```lua
-local a = file("1.txt") -- single file stream
-local b = file("2.txt", "3.txt") -- multiple file stream
+local a = file("1.txt") -- 单文件流
+local b = file("2.txt", "3.txt") -- 多文件流
 
  # operator reload to reset file stream
-local c = a + b -- converge file stream to handle at the same time
-local d = c - file("2.txt") -- remove file stream based-on the second parameter
+local c = a + b -- 聚合文件流一起操作
+local d = c - file("2.txt") -- 移除文件流，根据第二个参数
 ```
+
 ## stream()
 
-* Prototype
+* 原型
 ```lua
 ---@param str string
 ---@return pipe
 function stream(str) end
 ```
 
-* Introduce
+* 介绍
 
-stream converts string into pipe object, which allow you use operator to handle file stream, just like the pipe operation of terminal.
+stream 转换字符串为 pipe 对象，它运行你使用运算符去操作文件流，就像终端的管道操作。
 
-* Example
+* 示例
 ```lua
 local a = stream("Hello World") # create pipe object
-_ = file("test.txt") < a -- write with truncation to test.txt
+_ = file("test.txt") < a -- 覆盖写入 test.txt
 
-_ = file("test.txt") <= a -- write with append to test.txt
+_ = file("test.txt") <= a -- 追加写入 test.txt
 ```

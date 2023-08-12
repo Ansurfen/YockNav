@@ -1,34 +1,33 @@
 ---
-title: string
-icon: Field-String
+title: 字符串
 ---
 
 ## grep_opt
-* case? boolean, determine whether case sensitivity ignored
-* color? string, set the color format for output
-* pattern string, indicates a pattern to match string
-* file? string[], searches matched results from files and its priority is more than str field, which means str field will be unavailable when set file field
-* str? string[], searches matched results from string array and is unavailable when set file field, no supporting string with line break ('\n')
+* case? boolean, 决定是否忽略大小写
+* color? string, 设置输出的颜色
+* pattern string, 指明匹配的模式
+* file? string[], 从文件中搜索匹配的结果，它的优先级高于 str 字段，者意味着 str 将失效当设置 file 字段。
+* str? string[], 从字符串数组中搜索匹配的结果。当 file 字段设置，它将失效，且不支持带换行符的字符串。
 
 ## grep()
 
-* Prototype
+* 原型
 ```lua
 ---@param opt grep_opt
 ---@return string, err
 function grep(opt) end
 ```
 
-* Introduce
+* 介绍
 
-grep binds for [ripgrep](https://github.com/BurntSushi/ripgrep) to implement cross platform, which means it's different with native grep on bash, and can search string with fast, easy, convenient.
+grep 绑定 [ripgrep](https://github.com/BurntSushi/ripgrep) 实现跨平台，这意味着它和 bash 上的原生 grep不同，它能够快速，简单，方便的搜索字符串。
 
-* Option:
+* 选项:
     - opt, [grep_opt](#grep-opt)
 
-* Example
+* 示例
 ```lua
--- queries according to string
+-- 根据字符串搜索
 local res, err = grep({
     pattern = "abc",
     str = { "abcd", "bcd", "abbc" }
@@ -36,7 +35,7 @@ local res, err = grep({
 yassert(err)
 table.dump(strings.Split(res, "\n"))
 
--- queries files
+-- 搜索文件
 write("./test.txt", "get\n get abc\n getGeT\nGET")
 local res, err = grep({
     case = true,
@@ -49,29 +48,29 @@ print(res)
 ```
 
 ## awk_opt
-* prog string|string[] # indicates single or multiple rules to extract string. `NOTE`: the single rule (string) only supports to write explicit prog string, but multiple rules (string[]) only support loading from .awk files.
-* var? table<string, string|number|integer> # defines keyed variable and can use its in prog through key.
+* prog string|string[] # 指明一个或多个规则去提取字符串。 `注意`: 单规则 (string) 只支持显式写入 prog 字符串, 而多规则 (string[]) 只支持从 .awk 文件中载入。
+* var? table<string, string|number|integer> # 定义键值变量，它能够在 prog 中利用 key 使用。
 * file? string[] # extracts matched results from files and its priority is more than str field, which means str field will be unavailable when set file field
 * str? string[] # extracts matched results from string array and is unavailable when set file field, no supporting string with line break ('\n')
 
 
 ## awk()
 
-* Prototype
+* 原型
 ```lua
 ---@param opt awk_opt
 ---@return string, err
 function awk(opt) end
 ```
 
-* Introduce
+* 介绍
 
 awk binds for [goawk](https://github.com/benhoyt/goawk) to implement cross platform, which means it's different with native awk on bash, and can handle or extract string with fast, easy, convenient.
 
-* Option
+* 选项
     - opt, [awk_opt](#awk-opt)
 
-* Example
+* 示例
 ```lua
 -- extracts from string
 local new, err = awk({

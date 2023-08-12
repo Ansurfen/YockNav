@@ -1,6 +1,5 @@
 ---
 title: JSON
-icon: harddisk
 ---
 
 ## json.encode()
@@ -15,7 +14,7 @@ function json.encode(v, ...) end
 
 * Introduce
 
-encode marshals table into json string
+encode 序列化 table 为 json 字符串
 
 * Example
 ```lua
@@ -35,7 +34,7 @@ function json.decode(str) end
 
 * Introduce
 
-decode unmarshals json string to table
+decode 反序列化 json 字符串为 table
 
 ## json.create()
 
@@ -49,7 +48,7 @@ function json.create(file, str) end
 
 * Introduce
 
-create opens json file to be specified and returns json_object and create json file when it don't exist. The second parameter indicates content to write file when create.
+create 打开指定的json文件，并返回json_object对象。如果文件不存在，将会创建。第二个参数指明创建时要写入文件的内容。
 
 ## json.open()
 
@@ -62,7 +61,7 @@ function json.open(file) end
 
 * Introduce
 
-open must opens an existed file. if not, it'll panic.
+open 必须要打开已经存在的文件，不然他将会panic。
 
 ## json.from_str()
 
@@ -75,7 +74,7 @@ function json.from_str(str) end
 
 * Introduce
 
-unmarshals json string to object and returns
+反序列化 json 字符串并返回对象
 
 ## json_object
 
@@ -133,7 +132,7 @@ function json_object:get(k) end
 
 * Introduce
 
-get could visit value by json path.
+get 能够以 json path 的方式访问值
 
 * Example
 ```lua
@@ -152,7 +151,7 @@ function json_object:rawget(k) end
 
 * Introduce
 
-rawget returns value according to key. It's different with `get`, and not any handling.
+rawget 根据 key 返回值。它与`get`不同，没有其他额外的操作。
 
 ## json_object:set()
 
@@ -165,7 +164,7 @@ function json_object:set(k, v) end
 
 * Introduce
 
-set could set value by json path.
+set 能够以 json path 的形式设置值。
 
 * Example
 ```lua
@@ -184,7 +183,7 @@ function json_object:rawset(k, v) end
 
 * Introduce
 
-rawget sets value according to key. It's different with `set`, and not any handling.
+rawget 根据 key 设置值。它和`set`不同，没有任何额外的处理。
 
 ## json_object:string()
 
@@ -208,7 +207,7 @@ function json_object:save(pretty) end
 
 * Introduce
 
-save persists json into file to be specified. In general, it's the same with calling `json.open` or `json.create` to indicate. You also could reset file field to change it. Pretty is optional, and it's false in default and will formats json string when be set true.
+save 持久化 json 到指定的文件。通常情况下，它和调用 `json.open` 或 `json.create` 指明的文件相同。你也可以重新设置 file 字段去改变他。Pretty 是可选的，它默认为 false。如果设置为 true，将会格式化/美化 json 字符串写入。
 
 * Example
 ```lua

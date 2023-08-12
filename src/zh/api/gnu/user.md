@@ -1,23 +1,22 @@
 ---
-title: user
-icon: harddisk
+title: 用户
 ---
 
 ## whoami()
 
-* Prototype
+* 原型
 ```lua
 ---@return string, err
 function whoami() end
 ```
 
-* Introduce
+* 介绍
 
-whoami returns hostname
+whoami 返回主机名
 
 ## chmod()
 
-* Prototype
+* 原型
 ```lua
 ---@param name string
 ---@param mode number
@@ -25,13 +24,13 @@ whoami returns hostname
 function chmod(name, mode) end
 ```
 
-* Introduce
+* 介绍
 
-chmod changes the mode of the named file to mode. If the file is a symbolic link, it changes the mode of the link's target.
+chmod 改变给定文件的模式。如果文件是符号链接，它将改变链接目标的模式。
 
 ## chown()
 
-* Prototype
+* 原型
 ```lua
 ---@param name string
 ---@param uid number
@@ -40,18 +39,18 @@ chmod changes the mode of the named file to mode. If the file is a symbolic link
 function chown(name, uid, gid) end
 ```
 
-* Introduce
+* 介绍
 
-chown changes the numeric uid and gid of the named file. If the file is a symbolic link, it changes the uid and gid of the link's target. A uid or gid of -1 means to not change that value.
+chown 改变给定文件的 uid 和 gid。如果文件是符号链接，它将改变链接目标的 uid 和 gid。uid 和 gid 为 -1 将不做任何改变。
 
 ## sudo()
 
-* Prototype
+* 原型
 ```lua
 ---@param cmd string
 function sudo(cmd) end
 ```
 
-* Introduce
+* 介绍
 
-sudo runs command with administrator permission
+sudo 以管理员权限运行命令

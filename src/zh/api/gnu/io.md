@@ -1,21 +1,20 @@
 ---
 title: IO
-icon: harddisk
 ---
 
 ## echo_mode
-* "c" # create a new file if none exists.
-* "t" # truncate regular writable file when opened.
-* "r" # open the file read-only.
-* "w" # open the file write-only.
-* "rw" # open the file read-write.
-* "a" # append data to the file when writing.
-* "e" # used with `c`, file must not exist.
-* "s" # open for synchronous I/O.
+* "c" # 当文件不存在时创建。
+* "t" # 覆盖写打开文件
+* "r" # 只读方式打开文件
+* "w" # 只写方式打开文件
+* "rw" # 以读写的方式打开文件
+* "a" # 追加写数据到文件
+* "e" # 和 `c` 一起使用，文件必须不存在。
+* "s" # 同步打开 I/O.
 
 ## echo()
 
-* Prototype
+* 原型
 ```lua
 ---@vararg string
 ---@return string[], err
@@ -27,28 +26,28 @@ function echo(...) end
 function echo(opt, ...) end
 ```
 
-* Option
-    - mode, [echo_mode](#echo-mode) (string), indicates how files are opened
-    - fd, string[], fd is short for file descriptor, which used for indicating where stream outputs. You can use filename as fd to write file, or print terminal by stdout, stderr.
+* 选项
+    - mode, [echo_mode](#echo-mode) (string), 指明文件如何打开
+    - fd, string[], fd 是文件描述符的缩写，用于指明流输出何处。你可以使用文件名作为 fd 去写入文件，或者使用 stdout, stderr 打印到终端。
 
-* Introduce
+* 介绍
 
-echo prints variable string argument on terminal andreturns an array that saves every result of print.Except primitive string, you also print environment variablecorresponding value.
+echo 打印可变字符参数到终端，打印的结果将会被保存到数组中返回。除了原始的字符串，你还能打印环境变量对应的值。
 
-* Example
+* 示例
 
-overload 1:
+重载 1:
 ```lua
 local data, err = echo("Hello", "World")
 yassert(#data == 2 and not err)
 
 local data = echo("$Path")
 if #data > 0 then
- print("Path: ", data[1]) -- effect like environ("Path")
+ print("Path: ", data[1]) -- 效果等同于 environ("Path")
 end
 ```
 
-overload 2:
+重载 2:
 ```lua
 -- append write
 echo({ fd = { "stdout", "test.txt" }, mode = "c|a|rw" }, "Hello World!")
@@ -59,57 +58,57 @@ echo({ fd = { "stdout", "test.txt" }, mode = "c|t|rw" }, "Hello World!")
 
 ## clear()
 
-* Prototype
+* 原型
 ```lua
 function clear() end
 ```
 
-* Introduce
+* 介绍
 
-clear clears outputs on terminal.
+clear 清空终端的输出。
 
 ## cd()
 
-* Prototype
+* 原型
 ```lua
 ---@param dir string
 ---@return err
 function cd(dir) end
 ```
 
-* Introduce
+* 介绍
 
-cd changes the current working directory to the named directory.
+cd 改变当前工作目录到指定目录。
 
 ## touch()
 
-* Prototype
+* 原型
 ```lua
 ---@param file string
 ---@return err
 function touch(file) end
 ```
 
-* Introduce
+* 介绍
 
-touch creates an empty file when file isn't exist.
+touch 当文件不存在的时候创建文件。
 
 ## cat()
 
-* Prototype
+* 原型
 ```lua
 ---@param file string
 ---@return string, err
 function cat(file) end
 ```
 
-* Introduce
+* 介绍
 
-cat reads content from specified file.
+cat 读取指定文件的内容。
 
 ## ls()
 
-* Prototype
+* 原型
 ```lua
 ---@param dir string
 ---@return string[][], err
@@ -121,30 +120,29 @@ function ls(dir) end
 function ls(dir, callback) end
 ```
 
-* Introduce
+* 介绍
 
-overload 1
+重载 1
 
-ls lists the information of directory or file according to specified directory.
+ls 列出指定目录下子目录或文件的信息。
 
-`NOTE`: results to be returned by ls isn't like other gun command. In order to save memory, it's set array format to store information. You can see detail in the following.
+`注意`: ls 返回的结果不像其他 gnu 命令。为了节约内存，它被设置为数组形式去存储信息。你能够在下面看到它详细信息。
 
-overload 2
+重载 2
 
-ls recurses given directory, and can set callback that recives visited path and
+ls 递归给定的目录，能够在遍历时设置回调函数，接收访问的路径以及路径信息。
 
+* 格式信息
 
-* Format of info
+[1] 权限, string, e.g. -rwxrwxrwx, -rw-rw-rw-
 
-[1] permission, string, e.g. -rwxrwxrwx, -rw-rw-rw-
+[2] 大小, number
 
-[2] size, number
+[3] 修改事件, string, e.g. Aug  6 15:26
 
-[3] mod_time, string, e.g. Aug  6 15:26
+[4] 文件名, string
 
-[4] filename, string
-
-* Example
+* 示例
 ```lua
 ls(".", function(path, info)
      print(path)
@@ -153,24 +151,24 @@ end)
 
 ## mkdir()
 
-* Prototype
+* 原型
 ```lua
 ---@vararg string
 ---@return err
 function mkdir(...) end
 ```
 
-* Introduce
+* 介绍
 
-mkdir recurses to create directory.
+mkdir 递归创建目录。
 
 ## cp_opt
-* recurse?, boolean (default false), recurses to copy specified file or directory
-* force?, boolean (default false), covers file with the same name when set true
+* recurse?, boolean (default false), 递归复制指定的目录或文件
+* force?, boolean (default false), 当为 true，覆盖同名文件
 
 ## cp()
 
-* Prototype
+* 原型
 ```lua
 ---@param src string
 ---@param dst string
@@ -181,18 +179,17 @@ function cp(src, dst) end
 function cp(opt, path) end
 ```
 
-* Introduce
+* 介绍
 
-cp copies file or directory from src to dst
+cp 复制文件或目录从 src 到 dst
 
-* Option
-    - recurse?, boolean (default false), recurses to copy specified file or directory
-    - force?, boolean (default false), covers file with the same name when set true
+* 选项
+    - recurse?, boolean (default false), 递归复制指定的目录或文件
+    - force?, boolean (default false), 当为 true，覆盖同名文件
 
-* Example
+* 示例
 ```lua
---`NOTE`: It isn't support recurse, and see other overload
---when you want to do it.
+--`注意`: 这不支持递归，如果你要做它，看另一个重载。
 cp("a", "b")
 
 cp({ recurse = true }, {
@@ -203,14 +200,14 @@ cp({ recurse = true }, {
 
 ## mv()
 
-* Prototype
+* 原型
 ```lua
 ---@param src string
 ---@param dst string
 function mv(src, dst) end
 ```
 
-* Introduce
+* 介绍
 
 mv moves directory or file from src to dst, supporting recurse
 
